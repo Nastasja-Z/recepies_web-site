@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Main page</title>
+	<!--add bootstrap dependencies and ones for fonts-->   
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Comforter+Brush&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+    	function tryDemoChangeOfContent(content_div) {
+    		var contacts = document.getElementById("contacts");
+        var main_page = document.getElementById("main_page");
+    		var blog = document.getElementById("blog");
+    		var title = document.getElementById("title");
+        var recepies= document.getElementById("recepies");
+    		if (document.getElementById(content_div)==main_page) {
+        contacts.style.display = "none";
+    		blog.style.display = "none";
+    		main_page.style.display = "block";
+        recepies.style.display="none";
+    		title.innerHTML = "Обломов";
+        $('#item1').toggleClass("active");
+        $('#item2').removeClass("active");
+        $('#item3').removeClass("active");
+        $('#item4').removeClass("active");
+    		} else if(document.getElementById(content_div)==contacts) {
+    		contacts.style.display = "block";
+    		main_page.style.display = "none";	
+        blog.style.display = "none";
+        recepies.style.display="none";
+    		title.innerHTML = "Контакты";
+          $('#item1').removeClass("active");
+        $('#item2').removeClass("active");
+        $('#item3').toggleClass("active");
+        $('#item4').removeClass("active");
+    		} else if(document.getElementById(content_div)==blog) {
+        contacts.style.display = "none";
+        main_page.style.display = "none"; 
+        blog.style.display = "block";
+        recepies.style.display="none";
+        title.innerHTML = "Блог";
+          $('#item1').removeClass("active");
+        $('#item2').removeClass("active");
+        $('#item3').removeClass("active");
+        $('#item4').toggleClass("active");
+        }
+        else if(document.getElementById(content_div)==recepies) {
+        contacts.style.display = "none";
+        main_page.style.display = "none"; 
+        blog.style.display = "none";
+        recepies.style.display="block";
+        title.innerHTML = "Рецепты";
+        $('#item1').removeClass("active");
+        $('#item2').toggleClass("active");
+        $('#item3').removeClass("active");
+        $('#item4').removeClass("active");
+        }
+	    }
+    </script>
+</head>
+<style type="text/css">
+	body {
+		font-family: 'Comfortaa', cursive;
+    font-size: 17px;
+	}
+  .fa {
+  font-size: 50px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.fa:hover {
+  color: darkblue;
+}
+table {
+  width: 100%;
+}
+td {
+  padding: 3%;
+}
+img.img-mg {
+  padding-bottom: 15px;
+  width: 300px;
+}
+</style>
+<body>
+
+	<!--MENU tags-->
+<div class="d-grid gap-3">
+<button class="btn btn-warning p-5" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop"><h1 id="title">Обломов</h1></button>
+<div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
+  <div class="offcanvas-header">
+    <h5 id="offcanvasTopLabel">Меню</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+   <ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" id="item1" aria-current="page" href="#" onclick="tryDemoChangeOfContent('main_page');">Главная страница</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#" id="item2" onclick="tryDemoChangeOfContent('recepies');">Рецепты</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#" id="item3" onclick="tryDemoChangeOfContent('contacts');">Контакты</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#" id="item4" onclick="tryDemoChangeOfContent('blog');">Блог</a>
+  </li>
+</ul>
+  </div>
+</div>
+</div>
+
+<!--CONTENT tags-->
+<div id="main" style="margin: 50px; ">
+
+  <!--RECEPIES-->
+  <div id="recepies" style="display: none;">
+    <table>
+      <tr>
+        <td>
+          <img src="r1.jpg" width="250px" class="img-mg"><br>
+          <button type="button" class="btn btn-primary btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Завтрак холостяка
+          </button>
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Завтрак холостяка</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  Каждый холостяк хочет кушать вкусно, но не всегда есть желание и возможность готовить разные блюда. Именно для вас мы приготовили простой рецепт завтрака для любого холостяка. Готовить очень быстро, а главное получается вкусно.<br><br>
+                  <iframe width="560" height="315" src="https://www.youtube.com/embed/Y6ezqVSEWWM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  <br><br>
+                 <b> Ингредиенты</b> <hr><br>
+                    Хлеб тостовый - 100 г <br>
+                    Масло сливочное - 25 г<br>
+                    Сыр "Чедер" - 80 - 100 г<br>
+                    Кетчуп - 20 - 30 мл<br>
+                    Яйца - 1 шт<br>
+                    Соль - добавить по вкусу
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+        <td>
+          <img src="r2.jpg" width="250px" class="img-mg"><br>
+          <button type="button" class="btn btn-primary btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+            Завтрак из яиц, обжаренных в кляре
+          </button>
+          <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Завтрак из яиц, обжаренных в кляре</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  Приготовить вкусный и полезный завтрак из яиц, обжаренных в кляре очень просто. Сегодня мы расскажем вам, как приготовить такой аппетитный завтрак вкусно и красиво. Блюдо получается сочным, аппетитным и необыкновенным.<br><br>
+                  <iframe width="560" height="315" src="https://www.youtube.com/embed/tzzq7Wtqn1A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    <br><br>
+                  <b>Ингредиенты</b><hr><br>
+                  Яйца - 5 шт<br>
+                  Белый хлеб - 150 г<br>
+                  Тимьян - 3 - 5 г<br>
+                  Розмарин - 3 - 5 г<br>
+                  Авокадо - 1 - 2 шт<br>
+                  Оливковое масло - 5 - 10 мл<br>
+                  Творожная масса - 70 г<br>
+                  Пшеничная мука - 50 г<br>
+                  Подсолнечное масло - 200 мл<br>
+                  Хлеб тостовый - 100 г<br>
+                  Соль - добавить по вкусу<br>
+                  Перец черный молотый - добавить по вкусу
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div></td>
+        <td>
+          <img src="r3.jpg" width="250px" class="img-mg"><br>
+          <button type="button" class="btn btn-primary btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal3">
+          Суп рыбака с лососем
+          </button>
+          <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Суп рыбака с лососем</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  Это чудесное блюдо сможет покорить ваше сердце. Все дело в непревзойденной нежности и питательности данного супа. Благодаря прекрасному сочетанию таких ингредиентов как лосось и сливки, данное блюдо становится для многих одним из самых любимых!<br><br>
+                  <iframe width="560" height="315" src="https://www.youtube.com/embed/DkMF4UN5Kmk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    <br><br>
+                                    <b>Ингредиенты</b><hr><br>
+                  Лук репчатый - 2-3 шт<br>
+                  Картошка - 2-3 шт<br>
+                  Морковь - 1 шт<br>
+                  Перец белый молотый - по вкусу<br>
+                  Соль - по вкусу<br>
+                  Масло сливочное - 250 г<br>
+                  Вода - 0,5 л<br>
+                  Сливки - 1 л<br>
+                  Зелень - по вкусу<br>
+                  Лосось - 300-400 г
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <img src="r4.jpg" width="250px" class="img-mg"><br>
+          <button type="button" class="btn btn-primary btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal4">
+          Бюджетный луковый суп
+          </button>
+          <div class="modal fade" id="exampleModal4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Бюджетный луковый суп</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  Предлагаем приготовить французский луковый суп в бюджетном исполнении или просто луковый суп для студентов. В студенческие годы, живя в общежитии, приходится искать варианты интересных, вкусных, а главное недорогих блюд. Одним из таких рецептов сегодня мы поделимся с вами. Смотрите ниже фото с пошаговым приготовлением бюджетного и доступного супа.<br><br>
+                  <iframe width="560" height="315" src="https://www.youtube.com/embed/7T15fj_U7eY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    <br><br>
+
+                  <b>Ингредиенты</b><hr><br>
+                  Лук репчатый - 2 кг
+                  Масло сливочное - 100 г
+                  Вода - 2 л
+                  Рафинированное подсолнечное масло - 2-3 ст. л.
+                  Батон - 1 шт
+                  Сыр твердый - 300 г
+                  Яблочный уксус - 1 стакан
+                  Бульонный кубик - 3 шт
+                  Прованские травы - 2 ч. л.
+                  Соль - по вкусу
+                  Пшеничная мука - 2-3 ст. л.
+                  Перец черный молотый - по вкусу
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+        <td>
+          <img src="r5.jpg" width="250px" class="img-mg"><br>
+          <button type="button" class="btn btn-primary btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal5">
+          Луковый суп с красным вином
+          </button>
+          <div class="modal fade" id="exampleModal5" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Луковый суп с красным вином</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  Луковый суп с красным вином – один из вариантов классического французского лукового супа. Его насыщенный сладковатый вкус лука отлично сочетается с терпким свежим тимьяном и кисло-сладким вином. Тянущаяся сырная шапочка на хрустящей хлебной гренке – незаменимая изюминка этого блюда.<br><br>
+                  <iframe width="560" height="315" src="https://www.youtube.com/embed/lH1kULA43oo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    <br><br>
+                  <b>Ингредиенты</b><hr><br>
+                  Лук репчатый - 3 шт.<br>
+                  Мясной бульон - 300-400 мл<br>
+                  Вино красное полусухое - 1 стакан<br>
+                  Масло сливочное - 2-3 ст. л.<br>
+                  Хлеб - 1 шт.<br>
+                  Сыр "Пармезан" - 30 г<br>
+                  Сыр "Моцарелла" - 50 г<br>
+                  Оливковое масло - 1 ч. л.<br>
+                  Тимьян свежий - 2 веточки<br>
+                  Лавровый лист - 2 шт<br>
+                  Соль - по вкусу<br>
+                  Чёрный перец - по вкусу
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+        <td>
+          <img src="r6.jpg" width="250px" class="img-mg"><br>
+          <button type="button" class="btn btn-primary btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal6">
+            Каннеллони с прованскими травами
+          </button>
+          <div class="modal fade" id="exampleModal6" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Каннеллони с прованскими травами</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  Каннеллони – это вкусная и несложная в приготовлении альтернатива итальянской лазаньи с мясным фаршем. Попробовав наполненные питательной начинкой большие трубочки из теста (они же каннеллони), которые заправлены вкусным соусом, желание приготовить их еще не один раз возникнет обязательно!
+                  <br><br>
+                  Как это сделать в домашних условиях, смотрите в нашем рецепте.
+                  <br><br>
+                  <iframe width="560" height="315" src="https://www.youtube.com/embed/j4y1PqkAn1c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  <br><br>
+                  <b>Ингредиенты</b><hr><br>
+                  Каннеллони - 150 г<br>
+                  Говяжий фарш - 400 г<br>
+                  Лук репчатый - 1 шт.<br>
+                  Подсолнечное масло - 2 ст. л.<br>
+                  Перец черный молотый - 2 щепотки<br>
+                  Итальянские травы - 2 ч. л.<br>
+                  Томатный сок - 200 мл<br>
+                  Соль - По вкусу<br>
+                  Сыр "Пармезан" - 100 г<br>
+                  Чеснок - 3 зубка<br>
+                  Масло сливочное - 50 г<br>
+                  Молоко - 1 л<br>
+                  Пшеничная мука - 3 ст. л.<br>
+                  Мускатный орех молотый - 1 ч. л.
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <img src="r7.jpg" width="250px" class="img-mg"><br>
+          <button type="button" class="btn btn-primary btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal7">
+            Крокеты с беконом и сыром
+          </button>
+          <div class="modal fade" id="exampleModal7" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Крокеты с беконом и сыром</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  Крокеты с беконом и сыром – это сытное вкусное блюдо, которое легко и быстро готовится, но несмотря на это дарит колоссальные вкусовые и ароматические ощущения всем, кто его попробует. Крокеты имеют хрустящую корочку, привлекательный золотистый цвет, приятный нежный вкус и фантастический аромат.<br><br>
+                  <iframe width="560" height="315" src="https://www.youtube.com/embed/4-jni2lsCZE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    <br><br>
+
+                  <b>Ингредиенты</b><hr><br>
+                  Зелень - По вкусу<br>
+                  Панировочные сухари - Для панировки<br>
+                  Молоко - 1 л<br>
+                  Масло сливочное - 100 г<br>
+                  Лук - 1 шт.<br>
+                  Соленые огурцы - 1 шт.<br>
+                  Бекон - 100 г<br>
+                  Куриная грудка вареная - 2 шт.<br>
+                  Пшеничная мука - 200 г<br>
+                  Соль - По вкусу<br>
+                  Мускатный орех - По вкусу<br>
+                  Перец черный молотый - По вкусу<br>
+                  Перец чили молотый - По вкусу<br>
+                  Сметана - 3 ст. л.<br>
+                  Майонез - 1,5 ст. л.<br>
+                  Яйца - 3 шт.<br>
+                  Оливковое масло - 1 ч. л.<br>
+                  Подсолнечное масло - Для жарки
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+        <td>
+          <img src="r8.jpg" width="250px" class="img-mg"><br>
+          <button type="button" class="btn btn-primary btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal8">
+            Рыбные крокеты
+          </button>
+          <div class="modal fade" id="exampleModal8" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Рыбные крокеты</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  Рыбные крокеты - это блюдо, которое понравится всем любителям рыбы и морепродуктов. Они хрустящие, ароматные, красивые. Такие крокеты - это усовершенствованная версия рыбных котлет, приготовленных во фритюре. Приготовить такое блюдо не сложно, однако в его состав входят не слишком простые ингредиенты, поэтому их нужно приобрести заранее.<br><br>
+                  <iframe width="560" height="315" src="https://www.youtube.com/embed/0yr51NMheuQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    <br><br>
+
+                  <b>Ингредиенты</b><hr><br>
+                  Кальмары - 1 шт<br>
+                  Филе тилапии - 1 шт<br>
+                  Тигровые креветки - 100-150 г<br>
+                  Лук - 1 шт<br>
+                  Белок - 1 шт<br>
+                  Пшеничная мука - 1 ст. л.<br>
+                  Крахмал кукурузный - 1 ст. л.<br>
+                  Приправа к рыбе - по вкусу<br>
+                  Маринованные огурцы - 2 шт<br>
+                  Соевый соус - 1 ч. л.<br>
+                  Сметана - 2 ст. л.<br>
+                  Растительное масло - для жарки
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+        <td>
+          <img src="r9.jpg" width="250px" class="img-mg"><br>
+          <button type="button" class="btn btn-primary btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal9">
+            Борщ на бульоне
+          </button>
+          <div class="modal fade" id="exampleModal9" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Борщ на бульоне</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  Борщ – это изюминка украинской кухни, которая прославила нашу страну на весь мир. О неповторимом вкусе борща ходят легенды, и если вы хотите научиться готовить именно такой борщ, берите на заметку наш рецепт.<br><br>
+                  <iframe width="560" height="315" src="https://www.youtube.com/embed/J8c3UDmNunA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    <br><br>
+
+                  <b>Ингредиенты</b><hr><br>
+
+                  Говядина на кости - 1 кг<br>
+                  Вода - по вкусу<br>
+                  Картошка - 500 г<br>
+                  Капуста белокочанная - 300 г<br>
+                  Свекла - 400 г<br>
+                  Морков - 200 г<br>
+                  Лук - 200 г<br>
+                  Томатная паста - 3 ст.л.<br>
+                  Уксус 6% - 1 ч.л.<br>
+                  Чеснок - несколько зубков<br>
+                  Лавровый лист - по вкусу<br>
+                  Черный перец горошек - по вкусу<br>
+                  Перец душистый - по вкусу<br>
+                  Соль - по вкусу<br>
+                  Зелень - по вкусу<br>
+                  Растительное масло - для обжаривания
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <img src="r10.jpg" width="250px" class="img-mg"><br>
+          <button type="button" class="btn btn-primary btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal10">
+            Паста с мясом
+          </button>
+          <div class="modal fade" id="exampleModal10" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Паста с мясом</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <iframe width="560" height="315" src="https://www.youtube.com/embed/iNS6b5-7kVY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br><br>
+                 <b> Ингредиенты:</b><hr><br>
+                  Фарш 1 лоток<br>
+                  Овощная смесь заморозка 1уп<br>
+                  Томаты в соку 1 банка 800гр<br>
+                  Спагетти 300гр<br>
+                  Пармезан тертый 4ст ложки<br>
+                  ст ложка сушеного лука<br>
+                  Паприкa<br> 
+                  Чеснок<br>
+                  2 ветки тимьяна
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+        <td>
+          <img src="r11.jpg" width="250px" class="img-mg"><br>
+          <button type="button" class="btn btn-primary btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal11">
+            Домашний гамбургер
+          </button>
+          <div class="modal fade" id="exampleModal11" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Домашний гамбургер</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  Видео рецепт вкуснейшего домашнего гамбургера от славного друже обломов. Домашний бургер у обломова получается лучше чем в макдональдсе. Соус приготовлен по рецепту шеф повара Гордона Рамзи.<br><br>
+                  <iframe width="560" height="315" src="https://www.youtube.com/embed/zD-0y4sTx9I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    <br><br>
+                                    <b>Ингридиенты (На 4 чел.)</b><hr><br>
+                  Булочки для гамбургера<br>
+                  Свинина<br>
+                  Бекон<br>
+                  Помидор<br>
+                  Лук<br>
+                  Чеснок<br>
+                  Сыр чеддер<br>
+                  Салат<br>
+                  Корнишоны маринованные<br>
+                  <b>Соус:</b><br>
+                  Кетчуп2 ст.л.<br>
+                  острый перец1 шт.<br>
+                  Вустерширский соус2 ст.л.<br>
+                  Уксус винный1 ст.л.
+
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+        <td>
+          <img src="r12.jpg" width="250px" class="img-mg"><br>
+          <button type="button" class="btn btn-primary btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal12">
+            Сашими из осьминога
+          </button>
+          <div class="modal fade" id="exampleModal12" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Сашими из осьминога</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  Рецепт приготовления дом сашими из осьминога от славного друже обломов, что может быть лучше, чем самому приготовить целого осьминога в домашних условиях? Незабываемый опыт.<br><br>
+                  <iframe width="560" height="315" src="https://www.youtube.com/embed/jOQz-FFpBHg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    <br><br>
+                                    <b>Ингридиенты (На 8 и более чел.)</b><hr><br>
+                  Осьминог целый1 - шт.<br>
+                  уксуса - 1 ст.л.<br>
+                  соевого соуса - 1 ст.л.
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+    <!--   <tr>
+        <td>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Завтрак холостяка
+          </button>
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Завтрак холостяка</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  CONTENT
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+        <td>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Завтрак холостяка
+          </button>
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Завтрак холостяка</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  CONTENT
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+        <td>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Завтрак холостяка
+          </button>
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Завтрак холостяка</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  CONTENT
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr> -->      
+    </table>
+  </div>
+
+
+	<!--MAIN PAGE-->
+	<div id="main_page" style="display: block;">
+	<div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active" data-bs-interval="1000">
+      <img src="slide1.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item" data-bs-interval="2000">
+      <img src="slide2.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="slide3.jpg" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+  </div>
+  <div>
+    
+  </div>
+
+  <div style="margin: auto; display: block; width: 40%; font-size: 20px;" align="center"><br>
+    <hr><br><br>
+    Гастрономия — это искусство есть, когда нет аппетита, и пить, когда нет жажды.
+    <br><br><hr><br>
+  </div>
+
+  <div style="width: 90%; display: block; margin: auto;">
+    <h2>Общее</h2>
+    <hr>
+    <div>
+      <br>
+      Здесь можно найти информацию о самых простых блюдах, которые сможет приготовить каждый, даже человек, ни разу не стоявший около плиты. У нас есть большое количество рецептов, протестированных Славным Друже. И гарантированно каждый из них вам понравится.<br><br> <br><br>
+
+    </div>
+
+    <div class="border border-4 border-warning" style="width: 30%; margin: auto;display: block; float: left;  padding: 5%; margin-bottom: 50px;" align="center">
+      <a href="https://www.youtube.com/user/oblomoffstuff">
+        <img src="yt.png" width="30px">
+     Мой Youtube
+      </a>
+  </div>
+
+
+    <div class="border border-4 border-warning" style="width: 30%; margin: auto;display:block; padding: 5%; margin-bottom: 50px;" align="center">
+      <a href="https://www.youtube.com/redirect?event=channel_description&redir_token=QUFFLUhqbnhzcFhqSGFnRVdhQXRjcEFEbVpqUU1ZVlE3QXxBQ3Jtc0tucGNYXzlkUks4OVFoM1JhbjM5RHVMNXhWcDNYVmxhU2pESFc4TTBPaVZhSVpPZDVORGtpWHRPTU11UG5SdDhTVVF6Uy05SlJabmM3MGEwZWpZRTJPOGFLbDNJX0d2UnlBYmo0c3VHa2RKdkhqZ1l0dw&q=https%3A%2F%2Fwww.instagram.com%2Foblomoffrecipe%2F">
+      <img src="inst.png" width="30px"> Мой Instagram</a>
+    
+  </div>
+  <br>
+    <div class="border border-4 border-warning" style="width: 30%; margin: auto;display: block;float: left; padding: 5%; margin-bottom: 50px;" align="center">
+    По вопросам рекламы <br>
+oblomoffadvert@gmail.com
+  </div>
+    <div class="border border-4 border-warning" style="width: 30%; margin: auto;display: block; padding: 5%; margin-bottom: 50px;" align="center">
+
+      <a href="https://www.youtube.com/redirect?event=channel_description&redir_token=QUFFLUhqbVQ4SEpXV2tnSk1BeW0tWTdaQ0piZTg3dWNNZ3xBQ3Jtc0tuY2M3aDRXYkptTkdjalhFQmp2U3h3V3h5NUFLZlA5eTFPRkRpNXVjZlZFS3N3VWRxb1VnZ0pUc0FYOGhLdk9nbUU4RWt5MnV2SmJ4ZURFRzJKbl9NZm5yQVNtc1BKNFJxb3NyaVVaZFlXcVlIT3RhTQ&q=https%3A%2F%2Fwww.tiktok.com%2Famp%2Ftag%2Foblomoffrecipe">
+        <img src="tt.png" width="30px">
+     Мой Tiktok
+      </a>
+  </div>
+  <br><br>
+  <hr>
+  <br>
+  </div>
+
+
+
+
+	</div>
+
+	<!--CONTACTS-->
+<div id="contacts" style="display: none;">
+<form class="row g-3" style="margin: 100px;">
+  <div class="col-md-6">
+    <label for="inputEmail" class="form-label" >Email</label>
+    <input type="email" class="form-control" id="inputEmail" placeholder="name@example.com">
+  </div>
+  <div class="col-md-6">
+    <label for="inputPassword4" class="form-label">Name</label>
+    <input type="text" class="form-control" id="inputPassword4">
+  </div>
+  <div class="col-12">
+  <label for="floatingTextarea">Comments</label>
+  <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+</div>
+  <div class="col-12">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="gridCheck">
+      <label class="form-check-label" for="gridCheck">
+        Check me out
+      </label>
+    </div>
+  </div>
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary">Send</button>
+  </div>
+<br><br><br>
+<div>
+  По вопросам рекламы -<br>
+oblomoffadvert@gmail.com
+</div>
+</form>
+
+</div>
+
+<!--BLOG-->
+<div id="blog" style="display: none;">
+  <div class="border border-4 border-warning" style="width: 70%; margin: auto;display: block; padding: 5%; margin-bottom: 50px;">
+    <p>
+      <img src="logo.jpg" class="rounded-circle" width="50px" height="50px">
+      oblomoff
+    </p>
+      ПОИСТИНЕ ТРУШНЫЕ САШИМИ ИЗ КРЕВЕТКИ!<br>
+      <a href="https://youtu.be/nXo03LAGJ3g">https://youtu.be/nXo03LAGJ3g</a><br><br>
+      <img src="blog1.jpg" class="img-thumbnail">
+      <br><br>
+      Data: 27.11.2021
+      
+      <i onclick="myFunction(this)" class="fa fa-thumbs-up" style="font-size: 30px; margin-left: 70%;"></i>
+
+  </div>
+
+   <div class="border border-4 border-warning" style="width: 70%; margin: auto;display: block; padding: 5%; margin-bottom: 50px;">
+     <p>
+      <img src="logo.jpg" class="rounded-circle" width="50px" height="50px">
+      oblomoff
+    </p>
+      ОЧЕНЬ КРУТОЙ ПИРОГ СВОЕЙ ПРОСТОТОЙ<br>
+      <a href="https://youtu.be/tbIzSAiziaU">https://youtu.be/tbIzSAiziaU</a><br><br>
+      <img src="blog2.jpg" class="img-thumbnail">
+      <br><br>
+      Data: 11.10.2021
+      <i onclick="myFunction(this)" class="fa fa-thumbs-up" style="font-size: 30px; margin-left: 70%;"> </i>
+  </div>
+
+  <div class="border border-4 border-warning" style="width: 70%; margin: auto;display: block; padding: 5%; margin-bottom: 50px;">
+     <p>
+      <img src="logo.jpg" class="rounded-circle" width="50px" height="50px">
+      oblomoff
+    </p>
+      РЕЦЕПТ ДОМАШНЕЙ КОЛБАСЫ УЖЕ НА СТАФФЕ!<br>
+      <a href="https://youtu.be/otjaalF0udU">https://youtu.be/otjaalF0udU</a><br><br>
+      <img src="blog3.jpg" class="img-thumbnail">
+      <br><br>
+      Data: 01.10.2021
+      <i onclick="myFunction(this)" class="fa fa-thumbs-up" style="font-size: 30px; margin-left: 70%;"> </i>
+  </div>
+
+  <div class="border border-4 border-warning" style="width: 70%; margin: auto;display: block; padding: 5%; margin-bottom: 50px;">
+     <p>
+      <img src="logo.jpg" class="rounded-circle" width="50px" height="50px">
+      oblomoff
+    </p>
+      НОВЫЙ РОЛИК УЖЕ НА КАНАЛЕ!<br>
+      <a href="https://youtu.be/De0djb-IUdw">https://youtu.be/De0djb-IUdw</a><br><br>
+      <img src="blog4.jpg" class="img-thumbnail">
+      <br><br>
+      Data: 27.09.2021
+      <i onclick="myFunction(this)" class="fa fa-thumbs-up" style="font-size: 30px; margin-left: 70%;"> </i>
+  </div>
+
+  <div class="border border-4 border-warning" style="width: 70%; margin: auto;display: block; padding: 5%; margin-bottom: 50px;">
+     <p>
+      <img src="logo.jpg" class="rounded-circle" width="50px" height="50px">
+      oblomoff
+    </p>
+      Так чисто взяли топчик с Шайтаном. =) ПОнимаю что всем насрать, но для нас, раков, это большое достижение))))<br><br>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/r2bLS4r0LKY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <br><br>
+      Data: 13.09.2021
+      <i onclick="myFunction(this)" class="fa fa-thumbs-up" style="font-size: 30px; margin-left: 70%;"> </i>
+  </div>
+
+  <div class="border border-4 border-warning" style="width: 70%; margin: auto;display: block; padding: 5%; margin-bottom: 50px;">
+     <p>
+      <img src="logo.jpg" class="rounded-circle" width="50px" height="50px">
+      oblomoff
+    </p>
+      ЗАПИЛИЛ НЬОКИ!<br>
+      <a href="https://youtu.be/Sghmbe0sbzU">https://youtu.be/Sghmbe0sbzU</a><br><br>
+      <img src="blog5.jpg" class="img-thumbnail">
+      <br><br>
+      Data: 27.11.2021
+      <p onclick="myFunction(this)" class="fa fa-thumbs-up" style="font-size: 30px; margin-left: 70%;"></p>
+  </div>
+</div>
+</div>
+</div>
+<script>
+  function myFunction(x) {
+      x.classList.toggle("fa-thumbs-down");
+  }
+</script>
+<!--FOOTER tags-->
+ <footer class="footer mt-auto py-3 bg-light">
+  <div class="container">
+    <span class="text-muted">Здесь вы можете найти самые незабываемые рецепты.<br>
+    	По всем вопросам можете обращаться:<br>
+    	<a href="#"onclick="tryDemoChangeOfContent('contacts');">Сюда</a><br><br>
+      <p style="margin: auto; text-align: center;">
+          	127474, Ukraine, Charkiw<br>
+      +380123456789<br>
+      info@oblomov.com <br><br>
+      © 2021 Обломов. Все права защищены.
+      </p>
+    </span>
+  </div>
+</footer>
+
+<!--add bootstrap dependencies-->   
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>     
+</body>
+</html>
